@@ -12,12 +12,12 @@ public class C01_ByTagName_ByLinkText {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //1- Bir test class’i olusturun ilgili ayarlari yapin
+        // 1- Bir test class’i olusturun ilgili ayarlari yapin.
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
-        //2- https://www.automationexercise.com/ adresine gidin
+        // 2- https://www.automationexercise.com/ adresine gidin.
         driver.get("https://www.automationexercise.com/");
 
         //   cikan cookies kabul edin
@@ -26,36 +26,29 @@ public class C01_ByTagName_ByLinkText {
                 .click();
         Thread.sleep(1000);
 
-        //3- Sayfada 147 adet link bulundugunu test edin.
+        // 3- Sayfada 147 adet link bulundugunu test edin.
         List<WebElement> linkElementleriList = driver.findElements(By.tagName("a"));
-
         int expectedLinkSayisi = 147;
         int actualLinkSayisi = linkElementleriList.size();
 
-        if (expectedLinkSayisi == actualLinkSayisi){
+        if (expectedLinkSayisi == actualLinkSayisi) {
             System.out.println("Link sayisi testi PASSED");
         } else System.out.println("Link sayisi testi FAILED");
 
-        //4- Products linkine tiklayin
-
+        // 4- Products linkine tiklayin.
         // driver.findElement(By.linkText(" Products")).click();
-
         driver.findElement(By.partialLinkText("oducts"))
                 .click();
 
-        //5- special offer yazisinin gorundugunu test edin
-
+        // 5- special offer yazisinin gorundugunu test edin.
         WebElement specialOfferyaziElementi = driver.findElement(By.id("sale_image"));
 
-        if (specialOfferyaziElementi.isDisplayed()){
+        if (specialOfferyaziElementi.isDisplayed()) {
             System.out.println("Special Offer yazi testi PASSED");
         } else System.out.println("Special Offer yazi testi FAILED");
 
-        //6- Sayfayi kapatin
+        // 6- Sayfayi kapatin.
         Thread.sleep(3000);
         driver.quit();
-
-
-
     }
 }

@@ -26,40 +26,36 @@ public class C02_WebElementMethodlari {
         erkekRadioButton.click();
 
         // istediginiz radio button'un secili oldugunu test edin
-        if (erkekRadioButton.isSelected()){
+        if (erkekRadioButton.isSelected()) {
             System.out.println("sectigimiz radio button testi PASSED");
         } else  System.out.println("sectigimiz radio button testi FAILED");
 
         // sizin isaretlediginiz disindaki butonlarin secili olmadigini test edin
-
-        if (!kadinRadioButton.isSelected()){
+        if (!kadinRadioButton.isSelected()) {
             System.out.println("secmedigimiz radio button testi1 PASSED");
         } else  System.out.println("secmedigimiz radio button testi1 FAILED");
 
-        if (!digerRadioButton.isSelected()){
+        if (!digerRadioButton.isSelected()) {
             System.out.println("secmedigimiz radio button testi2 PASSED");
         } else  System.out.println("secmedigimiz radio button testi2 FAILED");
 
         // soyisim kutusunun boyutlarini ve konumunu yazdirin
         WebElement soyisimKutuElementi = driver.findElement(By.id("surname"));
 
-        System.out.println("Soyisim kutusu boyut : "+ soyisimKutuElementi.getSize());
-        System.out.println("Soyisim kutusu konum : " + soyisimKutuElementi.getLocation());
+        System.out.println("Soyisim kutusu boyut: " + soyisimKutuElementi.getSize());
+        System.out.println("Soyisim kutusu konum: " + soyisimKutuElementi.getLocation());
 
         // soyisim kutusunun HTML kodundaki class attribute degerinin
         // "form-control" oldugunu test edin
-
         String expectedAtrDegeri = "form-control";
         String actualAtrDegeri = soyisimKutuElementi.getAttribute("class");
 
-        if (expectedAtrDegeri.equals(actualAtrDegeri)){
+        if (expectedAtrDegeri.equals(actualAtrDegeri)) {
             System.out.println("soyisim kutusu class attribute testi PASSED");
         } else  System.out.println("soyisim kutusu class attribute testi FAILED");
 
         // sayfayi kapatin
         Thread.sleep(2000);
         driver.quit();
-
-
     }
 }

@@ -15,36 +15,32 @@ public class C01_Xpath {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //1- https://testotomasyonu.com/addremove/ adresine gidin
+        // 1- https://testotomasyonu.com/addremove/ adresine gidin.
         driver.get("https://testotomasyonu.com/addremove/");
 
-        //2- Add Element butonuna basin
+        // 2- Add Element butonuna basin.
         driver.findElement(By.xpath("//button[@id='sub-btn']"))
                 .click();
 
-        //3- Remove butonu’nun gorunur oldugunu test edin
+        // 3- Remove butonu’nun gorunur oldugunu test edin.
         WebElement removeButonu = driver.findElement(By.xpath("//*[@class='remove-btn']"));
 
-        if (removeButonu.isDisplayed()){
+        if (removeButonu.isDisplayed()) {
             System.out.println("Remove button testi PASSED");
         } else System.out.println("Remove button testi FAILED");
 
-        //4- Remove tusuna basin
+        // 4- Remove tusuna basin.
         removeButonu.click();
 
-        //5- “Add/Remove Elements” yazisinin gorunur oldugunu test edin
-
+        // 5- “Add/Remove Elements” yazisinin gorunur oldugunu test edin.
         // WebElement addRemoveYaziElementi = driver.findElement(By.tagName("h2"));
-
         WebElement addRemoveYaziElementi = driver.findElement(By.xpath("//h2"));
 
-        if (addRemoveYaziElementi.isDisplayed()){
+        if (addRemoveYaziElementi.isDisplayed()) {
             System.out.println("Add Remove yazi testi PASSED");
         } else System.out.println("Add Remove yazi testi FAILED");
 
-
-        //6- sayfayi kapatin
+        // 6- Sayfayi kapatin.
         driver.quit();
-
     }
 }

@@ -7,27 +7,21 @@ public class C02_DriverGetMethodlari {
 
     public static void main(String[] args) throws InterruptedException {
 
-
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.testotomasyonu.com");
-
 
         System.out.println(driver.getTitle()); // Test Otomasyonu - Test Otomasyonu
         // sayfanin basligini (Title) getirir
 
-
-        System.out.println(driver.getCurrentUrl());
-        //   https://www.testotomasyonu.com/
+        System.out.println(driver.getCurrentUrl()); // https://www.testotomasyonu.com/
         // gidilen sayfadaki actual url'i getirir
 
-
-        System.out.println(driver.getPageSource());
-
+        System.out.println(driver.getPageSource()); // gidilen sayfanin kaynak kodunu getirir
 
         System.out.println(driver.getWindowHandle()); // ACD4E31E98AF4C1C0C3ACD5A3BF368AD
         System.out.println(driver.getWindowHandles()); // [ACD4E31E98AF4C1C0C3ACD5A3BF368AD]
 
-          /*
+        /*
          WebDriver olusturulan her bir objeye
          benzersiz (unique) bir Window Handle Degeri atar.
 
@@ -42,9 +36,7 @@ public class C02_DriverGetMethodlari {
 
          driver'in acilan Window'lar arasinda gecis yapabilmesi icin
          gecegi window'un window handle degerini bilmesi gerekir
-
          */
-
 
         Thread.sleep(3000);
         // driver.close();
@@ -54,7 +46,7 @@ public class C02_DriverGetMethodlari {
          actigimiz driver'i kapatir
          driver.close(); // actigimiz driver'i kapatir
          aralarindaki fark; close() sadece 1 window kapatir
-         quit() ise test sirasinda birden fazla window acilsa da hepsini kapatir
+                            quit() ise test sirasinda birden fazla window acilsa da hepsini kapatir
          */
     }
 }

@@ -18,24 +18,24 @@ public class C03_Locators {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
-        //2-  https://www.testotomasyonu.com/ adresine gidin
+        // 2- https://www.testotomasyonu.com/ adresine gidin.
         driver.get("https://www.testotomasyonu.com/");
 
-        //3-  Browseri tam sayfa yapin
+        // 3- Browseri tam sayfa yapin.
         driver.manage().window().maximize();
 
-        //4-  Sayfayi “refresh” yapin
+        // 4- Sayfayi “refresh” yapin.
         driver.navigate().refresh();
 
-        //5-  Sayfa basliginin “Test Otomasyonu” ifadesi icerdigini test edin
+        // 5- Sayfa basliginin “Test Otomasyonu” ifadesi icerdigini test edin.
         String expectedTitleIcerik = "Test Otomasyonu";
         String actualTitle = driver.getTitle();
 
-        if (actualTitle.contains(expectedTitleIcerik)){
+        if (actualTitle.contains(expectedTitleIcerik)) {
             System.out.println("Title testi PASSED");
         } else System.out.println("Title testi FAILED");
 
-        //6-  Furniture linkine tiklayin
+        // 6-  Furniture linkine tiklayin.
         /*
             Bir HTML element acilan sayfada asagida kaldigi icin
             ilk acilan bolumde gorunmuyorsa
@@ -51,13 +51,12 @@ public class C03_Locators {
 
             Actions actions = new Actions(driver);
             actions.sendKeys(Keys.PAGE_DOWN).perform();
-
          */
 
         driver.findElement(By.xpath("(//a[text()='Furniture'])[3]"))
                 .click();
 
-        //7-  price range filtresinde min degere 40, max degere 200 yazip filtreleyin
+        // 7- price range filtresinde min degere 40, max degere 200 yazip filtreleyin.
         WebElement minKutusu = driver.findElement(By.cssSelector("input[name='min']"));
         minKutusu.clear();
         minKutusu.sendKeys("40");
@@ -66,21 +65,22 @@ public class C03_Locators {
         maxKutusu.clear();
         maxKutusu.sendKeys("200");
 
-        //filtrele butonuna basalim
-        driver.findElement(By.cssSelector("button[name='button']")).click();
+        // filtrele butonuna basalim
+        driver.findElement(By.cssSelector("button[name='button']"))
+                .click();
 
-        //8-  filtreleme sonucunda urun bulunabildigini test edin
+        // 8- Filtreleme sonucunda urun bulunabildigini test edin.
         List<WebElement> bulunanUrunElementleriList = driver.findElements(By.cssSelector("a[class='prod-img']"));
 
-        if (bulunanUrunElementleriList.size() > 0){
+        if (bulunanUrunElementleriList.size() > 0) {
             System.out.println("urun filtreleme testi PASSED");
         } else System.out.println("urun filtreleme testi FAILED");
 
+        // 9- Ilk urunu tiklayin.
+        bulunanUrunElementleriList.get(0)
+                .click();
 
-        //9-Ilk urunu tiklayin
-        bulunanUrunElementleriList.get(0).click();
-
-        //10- Urun fiyatinin 40 ile 200 arasinda oldugunu test edin
+        // 10- Urun fiyatinin 40 ile 200 arasinda oldugunu test edin.
         WebElement urunFiyatElementi = driver.findElement(By.id("priceproduct"));
 
         System.out.println(urunFiyatElementi.getText());
@@ -91,14 +91,11 @@ public class C03_Locators {
 
         Double urunFiyatiDbl = Double.parseDouble(urunFiyatiStr) / 100 ;
 
-        if (urunFiyatiDbl>= 40 && urunFiyatiDbl<=200){
+        if (urunFiyatiDbl >= 40 && urunFiyatiDbl <= 200) {
             System.out.println("Urun fiyat testi PASSED");
         } else System.out.println("Urun fiyat testi FAILED");
 
-
-        //11-Sayfayi kapatin
+        // 11- Sayfayi kapatin.
         driver.quit();
-
-
     }
 }

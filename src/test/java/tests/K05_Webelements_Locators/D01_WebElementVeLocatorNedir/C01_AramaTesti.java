@@ -11,15 +11,16 @@ public class C01_AramaTesti {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //1- Bir test class’i olusturun ilgili ayarlari yapin
+        // 1- Bir test class’i olusturun ilgili ayarlari yapin.
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //2- https://www.testotomasyonu.com adresine gidin
+        // 2- https://www.testotomasyonu.com adresine gidin.
         driver.get("https://www.testotomasyonu.com");
 
-        //3- urun arama kutusunu locate edin ve kaydedin
+        // 3- Urun arama kutusunu locate edin ve kaydedin.
+
         /*
                 Kodlarimiz ile reel browser'daki bir webelement'i kullanabilmek icin
                 once o webelementi kodlarimizla tanimlayip
@@ -28,18 +29,14 @@ public class C01_AramaTesti {
 
         WebElement aramaKutusu = driver.findElement(By.id("global-search"));
 
-        //4- arama kutusuna “shoe” yazdirin
+        // 4- Arama kutusuna “shoe” yazdirin.
         aramaKutusu.sendKeys("shoe");
 
-        //5- arama islemini yapabilmek icin ENTER tusuna basin
+        // 5- Arama islemini yapabilmek icin ENTER tusuna basin.
         aramaKutusu.submit();
-
         Thread.sleep(2000);
 
-        //6- sayfayi kapatin
+        // 6- Sayfayi kapatin.
         driver.quit();
-
-
-
     }
 }

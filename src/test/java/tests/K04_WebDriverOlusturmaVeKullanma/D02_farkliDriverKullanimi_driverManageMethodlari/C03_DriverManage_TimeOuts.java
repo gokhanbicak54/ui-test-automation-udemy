@@ -27,13 +27,11 @@ public class C03_DriverManage_TimeOuts {
             veya testin FAILED olmasina sebep olur
 
          */
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-
-
 
         /*
             Thread.sleep(3000) Java'dan gelir ve mutlak bir bekleme suresidir
@@ -56,8 +54,8 @@ public class C03_DriverManage_TimeOuts {
             aradigi webelementi bulamazsa
             exception firlatir ve calismayi durdurur
          */
+
         Thread.sleep(2000);
         driver.quit();
-
     }
 }

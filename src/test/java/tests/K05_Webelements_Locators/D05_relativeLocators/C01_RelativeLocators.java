@@ -27,10 +27,10 @@ public class C01_RelativeLocators {
             alternatif olarak RELATIVE LOCATOR'i deneyebilirsiniz
          */
 
-        //1 ) https://testotomasyonu.com/relativeLocators adresine gidin
+        // 1) https://testotomasyonu.com/relativeLocators adresine gidin.
         driver.get("https://testotomasyonu.com/relativeLocators");
 
-        //2 ) DSLR Camera’yi  etrafindaki elementleri kullanarak
+        // 2) DSLR Camera’yi  etrafindaki elementleri kullanarak.
         //    3 farkli relative locator ile locate edip tiklayin
                 /*
                  1- Relative locator'i kullanmak icin oncelikle
@@ -43,57 +43,47 @@ public class C01_RelativeLocators {
                  */
         // biz id = pic7_thumb olan diyelim
                 /*
-                 2- hedef webelementin etrafinda kullanabildigimiz bir webelementi
-                    locate edip kaydedelim
+                 2- hedef webelementin etrafinda kullanabildigimiz bir webelementi locate edip kaydedelim.
                     MotorE13 telefonun solunda diyelim
                  */
         WebElement motorTelElementi = driver.findElement(By.id("pic8_thumb"));
                 /*
-                3- Artik Relative locator ile hedef elementi locate edip kaydedebiliriz
+                3- Artik Relative locator ile hedef elementi locate edip kaydedebiliriz.
                  */
-        WebElement dslrCamera1 =
-                driver.findElement( RelativeLocator.with(By.id("pic7_thumb")).toLeftOf(motorTelElementi)  );
-
-
+        WebElement dslrCamera1 = driver.findElement( RelativeLocator.with(By.id("pic7_thumb")).toLeftOf(motorTelElementi));
         dslrCamera1.click();
 
-        //3 ) Acilan urunun DSLR Camera oldugunu test edin.
-
+        // 3) Acilan urunun DSLR Camera oldugunu test edin.
         WebElement dslrCameraIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
 
         String expectedUrunIsmi = "DSLR Camera";
         String actualUrunIsmi = dslrCameraIsimElementi.getText();
 
-        if (expectedUrunIsmi.equals(actualUrunIsmi)){
+        if (expectedUrunIsmi.equals(actualUrunIsmi)) {
             System.out.println("DSLR Camera testi1 PASSED");
         } else System.out.println("DSLR Camera testi1 FAILED");
 
-
-        // Ikinci olarak Apple kulakligin saginda diye relative locator kullanalim
-
-        //1 ) https://testotomasyonu.com/relativeLocators adresine gidin
+        // Ikinci olarak Apple kulakligin saginda diye relative locator kullanalim.
+        // 1) https://testotomasyonu.com/relativeLocators adresine gidin.
         driver.get("https://testotomasyonu.com/relativeLocators");
         Thread.sleep(1000);
 
-        // hedef elemente ait bir ozellik lazim
+        // Hedef elemente ait bir ozellik lazim.
         // biz id = pic7_thumb olan diyelim
 
-        // etraftan kullanabilecegimiz bir webElement bulup locate edip kaydetmeliyiz
+        // Etraftan kullanabilecegimiz bir webElement bulup locate edip kaydetmeliyiz.
         WebElement appleKulaklik = driver.findElement(By.id("pic6_thumb"));
 
-        WebElement dslrCamera2 =
-                driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).toRightOf(appleKulaklik));
-
-
+        WebElement dslrCamera2 = driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).toRightOf(appleKulaklik));
         dslrCamera2.click();
 
-        // acilan sayfadaki urunun DSLR Camera oldugunu test edelim
+        // Acilan sayfadaki urunun DSLR Camera oldugunu test edelim.
         dslrCameraIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
 
         expectedUrunIsmi = "DSLR Camera";
         actualUrunIsmi = dslrCameraIsimElementi.getText();
 
-        if (expectedUrunIsmi.equals(actualUrunIsmi)){
+        if (expectedUrunIsmi.equals(actualUrunIsmi)) {
             System.out.println("DSLR Camera testi2 PASSED");
         } else System.out.println("DSLR Camera testi2 FAILED");
 
@@ -112,35 +102,29 @@ public class C01_RelativeLocators {
          webelement'e yeniden deger atamasi yapmamiz gerekir.
          */
 
-        // Ucuncu olarak Bat kulakligin altinda diye relative locator kullanalim
-
-        //1 ) https://testotomasyonu.com/relativeLocators adresine gidin
+        // Ucuncu olarak Bat kulakligin altinda diye relative locator kullanalim.
+        // 1) https://testotomasyonu.com/relativeLocators adresine gidin
         driver.get("https://testotomasyonu.com/relativeLocators");
         Thread.sleep(1000);
 
         // hedef elementin bir ozelligi
         // biz id = pic7_thumb olan diyelim
 
-        // etraftan kullanabilecegimiz bir WebElement locate edip kaydedin
+        // etraftan kullanabilecegimiz bir WebElement locate edip kaydedin.
         WebElement batKulaklik = driver.findElement(By.id("pic2_thumb"));
 
-        WebElement dslrCamera3 =
-                driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).below(batKulaklik));
-
+        WebElement dslrCamera3 = driver.findElement(RelativeLocator.with(By.id("pic7_thumb")).below(batKulaklik));
         dslrCamera3.click();
 
-        // acilan sayfadaki urunun DSLR Camera oldugunu test edelim
+        // acilan sayfadaki urunun DSLR Camera oldugunu test edelim.
         dslrCameraIsimElementi = driver.findElement(By.xpath("//div[@class=' heading-sm mb-4']"));
 
         expectedUrunIsmi = "DSLR Camera";
         actualUrunIsmi = dslrCameraIsimElementi.getText();
 
-        if (expectedUrunIsmi.equals(actualUrunIsmi)){
+        if (expectedUrunIsmi.equals(actualUrunIsmi)) {
             System.out.println("DSLR Camera testi3 PASSED");
         } else System.out.println("DSLR Camera testi3 FAILED");
-
-
-
 
         Thread.sleep(1000);
         driver.quit();

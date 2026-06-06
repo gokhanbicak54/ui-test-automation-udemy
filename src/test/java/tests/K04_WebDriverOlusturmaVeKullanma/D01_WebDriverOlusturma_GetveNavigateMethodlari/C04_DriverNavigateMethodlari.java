@@ -28,7 +28,5 @@ public class C04_DriverNavigateMethodlari {
 
         Thread.sleep(1000);
         driver.quit();
-
     }
-
 }

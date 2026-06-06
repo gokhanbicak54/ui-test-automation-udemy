@@ -16,28 +16,19 @@ import java.util.Set;
 
 public class ReusableMethods {
 
-
     public static void bekle(int saniye) {
-
         try {
-
-            Thread.sleep(saniye*1000);
-
+            Thread.sleep(saniye * 1000);
         } catch (InterruptedException e) {
             System.out.println("Thread.sleep komutu calismadi");
         }
-
     }
 
-    public static List<String> stringListeDondur(List<WebElement> webElementListesi){
-
+    public static List<String> stringListeDondur(List<WebElement> webElementListesi) {
         List<String> stringList = new ArrayList<>();
-
-        for ( WebElement eachElement : webElementListesi){
-
-            stringList.add( eachElement.getText() );
+        for (WebElement eachElement : webElementListesi) {
+            stringList.add(eachElement.getText());
         }
-
         return stringList;
     }
 

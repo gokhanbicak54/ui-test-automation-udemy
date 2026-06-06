@@ -13,15 +13,14 @@ public class C01_IlkOtomasyon {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.testotomasyonu.com");
+
          /*
          istenen Url'e gider
          url yazarken www yazmasak da WebDriver objesi url'e gider
          ANCCAAAK https: yazmazsak kod calismaz
          */
 
-
         Thread.sleep(3000);
         driver.close();
-
     }
 }
