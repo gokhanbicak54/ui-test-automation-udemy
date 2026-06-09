@@ -1,6 +1,5 @@
 package tests.K06_JUnitFramework.D03_Assertions;
 
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -51,51 +50,48 @@ public class C01_OtomatikSonucRaporlama {
     static WebDriver driver;
 
     @BeforeAll // class'in basinda 1 kere calisir
-    public static void setup(){
+    public static void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterAll // class'in en sonunda 1 kere calisir
-    static void teardown()  {
+    static void teardown() {
         driver.quit();
     }
 
     @Test
-    public void test01(){
+    public void test01() {
         // 1- Test otomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
 
         //    Url'in testotomasyonu icerdigini test edin
-
         String expectedurlIcerik = "testotomasyonu";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.contains(expectedurlIcerik)){
+        if (actualUrl.contains(expectedurlIcerik)) {
             System.out.println("Url testi PASSED");
-        }else {
+        } else {
             System.out.println("Url testi FAILED");
             throw new AssertionFailedError();
         }
+
         ReusableMethods.bekle(1);
     }
 
     @Test
-    public void test02(){
+    public void test02() {
         // 2- phone icin arama yapin
-
         WebElement aramaKutusu = driver.findElement(By.id("global-search"));
         aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
         //    ve arama sonucunda urun bulunabildigini test edin
-
-        List<WebElement> bulunanUrunElementleriList =
-                driver.findElements(By.xpath("//*[@class='prod-img']"));
+        List<WebElement> bulunanUrunElementleriList = driver.findElements(By.xpath("//*[@class='prod-img']"));
 
         int actualSonucSayisi = bulunanUrunElementleriList.size();
 
-        if (actualSonucSayisi>0){
+        if (actualSonucSayisi > 0) {
             System.out.println("phone arama testi PASSED");
         } else {
             System.out.println("phone arama testi FAILED");
@@ -106,36 +102,22 @@ public class C01_OtomatikSonucRaporlama {
     }
 
     @Test
-    public void test03(){
+    public void test03() {
         // 3- ilk urunu tiklayin
         driver.findElement(By.xpath("(//*[@class='prod-img'])[1]"))
                 .click();
 
         //    ve acilan sayfadaki urun isminde case sensitive olmadan "phone" bulundugunu test edin
-
         WebElement ilkUrunIsimElementi = driver.findElement(By.xpath("//*[@class=' heading-sm mb-4']"));
 
         String expectedIsimIcerik = "phone";
-        String actualIsim = ilkUrunIsimElementi.getText()
-                .toLowerCase(); // case sensitive olmamasi icin
+        String actualIsim = ilkUrunIsimElementi.getText().toLowerCase(); // case sensitive olmamasi icin
 
-
-        if(actualIsim.contains(expectedIsimIcerik)){
+        if (actualIsim.contains(expectedIsimIcerik)) {
             System.out.println("Urun isim testi PASSED");
         } else {
             System.out.println("Urun isim testi FAILED");
             throw new AssertionFailedError();
         }
-
-
     }
-
-
-
-
-
-
-
-
-
 }

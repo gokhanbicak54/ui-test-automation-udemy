@@ -32,42 +32,33 @@ public class ReusableMethods {
         return stringList;
     }
 
-    public static void titleIleWindowGecisYap(WebDriver driver , String hedefWindowunTitle ){
+    public static void titleIleWindowGecisYap(WebDriver driver, String hedefWindowunTitle) {
         // 1- acik olan tum window'larin WHD'lerini alip kaydedelim
-
         Set<String> acikWindowlarinWhdleri = driver.getWindowHandles();
-
         //   [E7DF36DB6F21C9F3FACD1171BE7A52E1, 0FD94DE1BF431FA11ECEFA6FF529A3CE]
 
-        for (String eachWhd :acikWindowlarinWhdleri){
-
+        for (String eachWhd : acikWindowlarinWhdleri) {
             driver.switchTo().window(eachWhd);
             // gectigimiz window'un title'ini alip
             // gecmek istedigimiz window'un title'ina esit mi diye kontrol edelim
-
-            if (driver.getTitle().equals(hedefWindowunTitle)){
+            if (driver.getTitle().equals(hedefWindowunTitle)) {
                 //dogru window'dayiz demektir, burada kalabiliriz
                 break;
             }
-
         }
     }
 
-    public static void urlIleWindowGecisYap(WebDriver driver , String hedefUrl){
+    public static void urlIleWindowGecisYap(WebDriver driver, String hedefUrl) {
         // 1.adim acik tum window'larin whd'lerini alip kaydedelim
-
         Set<String> acikTumWindowsWhdSeti = driver.getWindowHandles();
 
-        for (String eachWhd :acikTumWindowsWhdSeti){
-
+        for (String eachWhd : acikTumWindowsWhdSeti) {
             driver.switchTo().window(eachWhd);
-
-            if (driver.getCurrentUrl().equals(hedefUrl)){
+            if (driver.getCurrentUrl().equals(hedefUrl)) {
                 // actual url, hedef url'e esit ise
                 // dogru yerdeyiz demektir, orada kalalim
                 break;
             }
-
         }
     }
 
@@ -83,17 +74,14 @@ public class ReusableMethods {
         File geciciDosya = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,tumSayfaResmi);
+            FileUtils.copyFile(geciciDosya, tumSayfaResmi);
         } catch (IOException e) {
             System.out.println("Resim cekilemedi");
         }
-
-
     }
 
-    public static void tumSayfaResimCek(WebDriver driver , String raporIsmi){
+    public static void tumSayfaResimCek(WebDriver driver, String raporIsmi) {
         // 1.adim tss objesi olusturalim
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 
@@ -105,16 +93,14 @@ public class ReusableMethods {
         File geciciDosya = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,tumSayfaResmi);
+            FileUtils.copyFile(geciciDosya, tumSayfaResmi);
         } catch (IOException e) {
             System.out.println("Resim cekilemedi");
         }
     }
 
     public static void tarihliTumSayfaResimCek(WebDriver driver) {
-
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
         String tarihEtiketi = localDateTime.format(format); // _241219_080623
@@ -130,17 +116,14 @@ public class ReusableMethods {
         File geciciDosya = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,tumSayfaResmi);
+            FileUtils.copyFile(geciciDosya, tumSayfaResmi);
         } catch (IOException e) {
             System.out.println("Resim cekilemedi");
         }
-
-
     }
 
-    public static void tarihliTumSayfaResimCek(WebDriver driver , String raporIsmi){
+    public static void tarihliTumSayfaResimCek(WebDriver driver, String raporIsmi) {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
         String tarihEtiketi = localDateTime.format(format); // _241219_080623
@@ -149,22 +132,21 @@ public class ReusableMethods {
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 
         // 2.adim resmi kaydedecegimiz File'i olusturalim
-        String dosyaYolu = "target/screenshots/" +raporIsmi+tarihEtiketi+".jpeg";
+        String dosyaYolu = "target/screenshots/" + raporIsmi+tarihEtiketi + ".jpeg";
         File tumSayfaResmi = new File(dosyaYolu);
 
         // 3.adim screenshot'i alip gecici bir dosya olarak kaydedelim
         File geciciDosya = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,tumSayfaResmi);
+            FileUtils.copyFile(geciciDosya, tumSayfaResmi);
         } catch (IOException e) {
             System.out.println("Resim cekilemedi");
         }
     }
 
-    public static void webElementResimCek(WebElement webElement){
+    public static void webElementResimCek(WebElement webElement) {
         // 1.adim screenshot alacagimiz webelementi locate edip kaydedelim
         //        biz parametre olarak gonderiyoruz
 
@@ -176,15 +158,14 @@ public class ReusableMethods {
         File geciciDosya = webElement.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,webElementResim);
+            FileUtils.copyFile(geciciDosya, webElementResim);
         } catch (IOException e) {
             System.out.println("Webelement resmi cekilemedi");
         }
     }
 
-    public static void webElementResimCek(WebElement webElement,String raporIsmi){
+    public static void webElementResimCek(WebElement webElement, String raporIsmi) {
         // 1.adim screenshot alacagimiz webelementi locate edip kaydedelim
         //        biz parametre olarak gonderiyoruz
 
@@ -196,15 +177,14 @@ public class ReusableMethods {
         File geciciDosya = webElement.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,webElementResim);
+            FileUtils.copyFile(geciciDosya, webElementResim);
         } catch (IOException e) {
             System.out.println("Webelement resmi cekilemedi");
         }
     }
 
-    public static void tarihliWebElementResimCek(WebElement webElement){
+    public static void tarihliWebElementResimCek(WebElement webElement) {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
         String tarihEtiketi = localDateTime.format(format); // _241219_080623
@@ -213,22 +193,21 @@ public class ReusableMethods {
         //        biz parametre olarak gonderiyoruz
 
         // 2.adim resmi kaydedecegimiz File'i olusturalim
-        String dosyaYolu = "target/screenshots/webElementResmi"+tarihEtiketi+".jpeg";
+        String dosyaYolu = "target/screenshots/webElementResmi" + tarihEtiketi + ".jpeg";
         File webElementResim = new File(dosyaYolu);
 
         // 3.adim webElement'i kullanarak screenshot'i alip gecici bir dosya olarak kaydedelim
         File geciciDosya = webElement.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,webElementResim);
+            FileUtils.copyFile(geciciDosya, webElementResim);
         } catch (IOException e) {
             System.out.println("Webelement resmi cekilemedi");
         }
     }
 
-    public static void tarihliWebElementResimCek(WebElement webElement,String raporIsmi){
+    public static void tarihliWebElementResimCek(WebElement webElement, String raporIsmi) {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
         String tarihEtiketi = localDateTime.format(format); // _241219_080623
@@ -237,16 +216,15 @@ public class ReusableMethods {
         //        biz parametre olarak gonderiyoruz
 
         // 2.adim resmi kaydedecegimiz File'i olusturalim
-        String dosyaYolu = "target/screenshots/" + raporIsmi + tarihEtiketi+ ".jpeg";
+        String dosyaYolu = "target/screenshots/" + raporIsmi + tarihEtiketi + ".jpeg";
         File webElementResim = new File(dosyaYolu);
 
         // 3.adim webElement'i kullanarak screenshot'i alip gecici bir dosya olarak kaydedelim
         File geciciDosya = webElement.getScreenshotAs(OutputType.FILE);
 
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
-
         try {
-            FileUtils.copyFile(geciciDosya,webElementResim);
+            FileUtils.copyFile(geciciDosya, webElementResim);
         } catch (IOException e) {
             System.out.println("Webelement resmi cekilemedi");
         }

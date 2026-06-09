@@ -1,6 +1,5 @@
 package tests.K06_JUnitFramework.D02_Annotations;
 
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -43,37 +42,36 @@ public class C04_BeforeAll_AfterAll {
     static WebDriver driver;
 
     @BeforeAll // class'in basinda 1 kere calisir
-    public static void setup(){
+    public static void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterAll // class'in en sonunda 1 kere calisir
-    static void teardown()  {
+    static void teardown() {
         driver.quit();
     }
 
     @Test
-    public void test01(){
+    public void test01() {
         // 1- Test otomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
 
         //    Url'in testotomasyonu icerdigini test edin
-
         String expectedurlIcerik = "testotomasyonu";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.contains(expectedurlIcerik)){
+        if (actualUrl.contains(expectedurlIcerik)) {
             System.out.println("Url testi PASSED");
-        }
+        } else System.out.println("Url testi FAILED");
+
         ReusableMethods.bekle(1);
     }
 
     @Test
-    public void test02(){
+    public void test02() {
         // 2- phone icin arama yapin
-
         WebElement aramaKutusu = driver.findElement(By.id("global-search"));
         aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
@@ -92,31 +90,19 @@ public class C04_BeforeAll_AfterAll {
     }
 
     @Test
-    public void test03(){
+    public void test03() {
         // 3- ilk urunu tiklayin
         driver.findElement(By.xpath("(//*[@class='prod-img'])[1]"))
                 .click();
 
         //    ve acilan sayfadaki urun isminde case sensitive olmadan "phone" bulundugunu test edin
-
         WebElement ilkUrunIsimElementi = driver.findElement(By.xpath("//*[@class=' heading-sm mb-4']"));
 
         String expectedIsimIcerik = "phone";
-        String actualIsim = ilkUrunIsimElementi.getText()
-                                                .toLowerCase(); // case sensitive olmamasi icin
+        String actualIsim = ilkUrunIsimElementi.getText().toLowerCase(); // case sensitive olmamasi icin
 
-
-        if(actualIsim.contains(expectedIsimIcerik)){
+        if (actualIsim.contains(expectedIsimIcerik)) {
             System.out.println("Urun isim testi PASSED");
         } else System.out.println("Urun isim testi FAILED");
-
-
     }
-
-
-
-
-
-
-
 }

@@ -1,6 +1,5 @@
 package tests.K06_JUnitFramework.D03_Assertions;
 
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -25,12 +24,12 @@ public class C04_BeforeVeAfterSartMi {
     WebDriver driver;
 
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 
     @Test
-    public void urunAramaTesti(){
+    public void urunAramaTesti() {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -40,27 +39,23 @@ public class C04_BeforeVeAfterSartMi {
         driver.get("https://www.testotomasyonu.com");
 
         //    Url'in testotomasyonu icerdigini test edin
-
         String expectedurlIcerik = "testotomasyonu111";
         String actualUrl = driver.getCurrentUrl();
 
         Assertions.assertTrue(actualUrl.contains(expectedurlIcerik),"url expected kelimeyi icermiyor");
-
         ReusableMethods.bekle(1);
 
         // 2- phone icin arama yapin
-
         WebElement aramaKutusu = driver.findElement(By.id("global-search"));
         aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
         //    ve arama sonucunda urun bulunabildigini test edin
 
-        List<WebElement> bulunanUrunElementleriList =
-                driver.findElements(By.xpath("//*[@class='prod-img']"));
+        List<WebElement> bulunanUrunElementleriList = driver.findElements(By.xpath("//*[@class='prod-img']"));
 
         int actualSonucSayisi = bulunanUrunElementleriList.size();
 
-        Assertions.assertTrue(actualSonucSayisi>0,"Istenen urun websayfasinda bulunamadi");
+        Assertions.assertTrue(actualSonucSayisi > 0,"Istenen urun websayfasinda bulunamadi");
         ReusableMethods.bekle(1);
 
         // 3- ilk urunu tiklayin
@@ -68,20 +63,12 @@ public class C04_BeforeVeAfterSartMi {
                 .click();
 
         //    ve acilan sayfadaki urun isminde case sensitive olmadan "phone" bulundugunu test edin
-
         WebElement ilkUrunIsimElementi = driver.findElement(By.xpath("//*[@class=' heading-sm mb-4']"));
 
         String expectedIsimIcerik = "phone";
-        String actualIsim = ilkUrunIsimElementi.getText()
-                .toLowerCase(); // case sensitive olmamasi icin
+        String actualIsim = ilkUrunIsimElementi.getText().toLowerCase(); // case sensitive olmamasi icin
 
         Assertions.assertTrue(actualIsim.contains(expectedIsimIcerik));
         ReusableMethods.bekle(1);
-
-
     }
-
-
-
-
 }

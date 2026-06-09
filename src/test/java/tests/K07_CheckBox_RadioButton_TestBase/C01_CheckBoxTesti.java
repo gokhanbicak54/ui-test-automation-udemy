@@ -2,12 +2,9 @@ package tests.K07_CheckBox_RadioButton_TestBase;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -16,19 +13,19 @@ public class C01_CheckBoxTesti {
     WebDriver driver;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
 
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 
     @Test
-    public void checkBoxTesti(){
+    public void checkBoxTesti() {
         //	a. Verilen web sayfasına gidin.
         //	     https://testotomasyonu.com/form
         driver.get("https://testotomasyonu.com/form");
@@ -49,7 +46,6 @@ public class C01_CheckBoxTesti {
 //        actions.sendKeys(Keys.PAGE_DOWN).perform();
 //        ReusableMethods.bekle(1);
 
-
         //	d. Seker ve Epilepsi checkbox’larininin seçili
         //     olmadigini test edin
 
@@ -58,6 +54,5 @@ public class C01_CheckBoxTesti {
 
         Assertions.assertFalse(sekerCheckbox.isSelected());
         Assertions.assertFalse(epilepsiCheckbox.isSelected());
-
     }
 }

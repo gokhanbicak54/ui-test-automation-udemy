@@ -10,20 +10,16 @@ public class C01_UnitTest {
         //                  3 basamakli pozitif bir sayi degilse false
         // donduren bir method olusturun
 
-
             ucBasamakliPozitifSayiTrueDonmeli();
             ikiBasamakliPozitifSayiFalseDonmeli();
             binVeyaDahaBuyukPozitifSayilarFalseDonmeli();
             negatifSayilarFalseDonmeli();
-
     }
 
-    public static boolean sayiyiKontrolEt(int sayi){
-
-        if (sayi>=100 && sayi<=999) return true;
+    public static boolean sayiyiKontrolEt(int sayi) {
+        if (sayi >= 100 && sayi <= 999) return true;
         else return false;
     }
-
 
     /*
         Bu method'u test etmek icin true veya false dondurmesi gereken
@@ -36,9 +32,7 @@ public class C01_UnitTest {
         - verilen sayi negatif bir sayi ise expectedSonuc = false
      */
 
-
-
-    public static void ucBasamakliPozitifSayiTrueDonmeli(){
+    public static void ucBasamakliPozitifSayiTrueDonmeli() {
         // - verilen sayi pozitif 3 basamakli sayi ise expectedSonuc = true
         //   100 - 999
 
@@ -47,12 +41,12 @@ public class C01_UnitTest {
 
         boolean methodSonucu = sayiyiKontrolEt(denenecekSayi);
 
-        if (methodSonucu){
+        if (methodSonucu) {
             System.out.println("ucBasamakliPozitifSayiTrueDonmeli methodu PASSED");
         } else System.out.println("ucBasamakliPozitifSayiTrueDonmeli methodu FAILED");
     }
 
-    public static void ikiBasamakliPozitifSayiFalseDonmeli(){
+    public static void ikiBasamakliPozitifSayiFalseDonmeli() {
         // - verilen sayi pozitif 100'den kucuk bir sayi ise expectedSonuc = false
         //   1 - 99
         Random random = new Random();
@@ -60,46 +54,36 @@ public class C01_UnitTest {
 
         boolean methodSonucu = sayiyiKontrolEt(denenecekSayi);
 
-        if (!methodSonucu){ // methodSonucu == false
+        if (!methodSonucu) { // methodSonucu == false
             System.out.println("ikiBasamakliPozitifSayiFalseDonmeli testi PASSED");
         } else System.out.println("ikiBasamakliPozitifSayiFalseDonmeli testi FAILED");
-
     }
 
-    public static void binVeyaDahaBuyukPozitifSayilarFalseDonmeli(){
+    public static void binVeyaDahaBuyukPozitifSayilarFalseDonmeli() {
         // - verilen sayi pozitif 999'dan buyuk bir sayi ise expectedSonuc = false
         //   1000 - .....
 
         Random random = new Random();
-        int denenecekSayi = random.nextInt(99999999)+ 1000;
+        int denenecekSayi = random.nextInt(99999999) + 1000;
 
         boolean methodSonucu = sayiyiKontrolEt(denenecekSayi);
 
-        if (!methodSonucu){ // methodSonucu == false
+        if (!methodSonucu) { // methodSonucu == false
             System.out.println("binVeyaDahaBuyukPozitifSayilarFalseDonmeli testi PASSED");
         } else System.out.println("binVeyaDahaBuyukPozitifSayilarFalseDonmeli testi FAILED");
-
-
     }
 
-    public static void negatifSayilarFalseDonmeli(){
+    public static void negatifSayilarFalseDonmeli() {
         // - verilen sayi negatif bir sayi ise expectedSonuc = false
         //  - ..... - 0
 
         Random random = new Random();
-        int denenecekSayi = (random.nextInt(99999999) + 1 ) * (-1);
+        int denenecekSayi = (random.nextInt(99999999) + 1) * (-1);
 
         boolean methodSonucu = sayiyiKontrolEt(denenecekSayi);
 
-        if (!methodSonucu){ // methodSonucu == false
+        if (!methodSonucu) { // methodSonucu == false
             System.out.println("negatifSayilarFalseDonmeli testi PASSED");
         } else System.out.println("negatifSayilarFalseDonmeli testi FAILED");
-
-
-
-
-
     }
-
-
 }

@@ -1,10 +1,8 @@
 package tests.K06_JUnitFramework.D02_Annotations;
 
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -30,7 +28,6 @@ public class C01_TestNotasyonu {
         @TestMethodOrder kullanmamiz gerekir
      */
 
-
     @Test @Order(10)
     public void testotomasyonuTesti() throws InterruptedException {
 
@@ -43,15 +40,13 @@ public class C01_TestNotasyonu {
         String expectedTitleIcerik = "Test Otomasyonu";
         String actualTitle = driver.getTitle();
 
-        if (actualTitle.contains(expectedTitleIcerik)){
+        if (actualTitle.contains(expectedTitleIcerik)) {
             System.out.println("Testotomasyonu testi PASSED");
         } else System.out.println("Testotomasyonu testi FAILED");
 
         Thread.sleep(1000);
         driver.quit();
-
     }
-
 
     @Test @Order(2)
     void junitTesti() throws InterruptedException {
@@ -65,15 +60,13 @@ public class C01_TestNotasyonu {
         String expectedUrl = "https://junit.org/junit5/";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.equals(expectedUrl)){
+        if (actualUrl.equals(expectedUrl)) {
             System.out.println("Junit testi PASSED");
         } else System.out.println("Junit testi FAILED");
 
         Thread.sleep(1000);
         driver.quit();
-
     }
-
 
     @Test  @Order(5)    //@Disabled   gecici sureligine calistirilmasini istemedigimiz method'lar icin kullanilabilir
     public void wisequarterTesti() throws InterruptedException {
@@ -87,20 +80,11 @@ public class C01_TestNotasyonu {
         String expectedUrlIcerik = "wisequarter";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.contains(expectedUrlIcerik)){
+        if (actualUrl.contains(expectedUrlIcerik)) {
             System.out.println("wisequarter testi PASSED");
         } else System.out.println("wisequarter testi FAILED");
 
         Thread.sleep(1000);
         driver.quit();
-
     }
-
-
-
-
-
-
-
-
 }

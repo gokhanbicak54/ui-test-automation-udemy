@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -20,19 +19,19 @@ public class C02_RadioButton {
     WebDriver driver;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 
     @Test
-    public void yazidanSecimTesti(){
+    public void yazidanSecimTesti() {
         //	a. Verilen web sayfasına gidin.
         //	      https://testotomasyonu.com/form
         driver.get("https://testotomasyonu.com/form");
@@ -52,12 +51,10 @@ public class C02_RadioButton {
         Assertions.assertTrue(erkekRadioButton.isSelected());
         Assertions.assertFalse(kadinRadioButton.isSelected());
         Assertions.assertFalse(digerRadioButton.isSelected());
-
     }
 
-
     @Test
-    public void butondanSecimTesti(){
+    public void butondanSecimTesti() {
         //	a. Verilen web sayfasına gidin.
         //	      https://testotomasyonu.com/form
         driver.get("https://testotomasyonu.com/form");
@@ -75,8 +72,5 @@ public class C02_RadioButton {
         Assertions.assertTrue(erkekRadioButton.isSelected());
         Assertions.assertFalse(kadinRadioButton.isSelected());
         Assertions.assertFalse(digerRadioButton.isSelected());
-
     }
-
-
 }
