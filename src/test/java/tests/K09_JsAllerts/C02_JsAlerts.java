@@ -6,10 +6,9 @@ import org.openqa.selenium.By;
 import utilities.ReusableMethods;
 import utilities.TestBase_Each;
 
-
 public class C02_JsAlerts extends TestBase_Each {
 
-    //3 test method'u olusturup asagidaki gorevi tamamlayin
+    // 3 test method'u olusturup asagidaki gorevi tamamlayin
     /*
         Bir webelement'e click yaptigimizda
         driver objesi ortam degisikligi beklemez
@@ -31,8 +30,8 @@ public class C02_JsAlerts extends TestBase_Each {
      */
 
     @Test
-    public void jsAlertsTest(){
-        //1. Test
+    public void jsAlertsTest() {
+        // 1. Test
         //	-  https://testotomasyonu.com/javascriptAlert adresine gidin
         driver.get("https://testotomasyonu.com/javascriptAlert");
 
@@ -46,26 +45,23 @@ public class C02_JsAlerts extends TestBase_Each {
                                         .alert()
                                         .getText();
 
-        Assertions.assertEquals(expectedAlertyazi,actualAlertYazi);
+        Assertions.assertEquals(expectedAlertyazi, actualAlertYazi);
 
         //	-  OK tusuna basip alert'i kapatin
         driver.switchTo()
                 .alert()
                 .accept();
-
-
     }
 
     @Test
-    public void jsConfirmTest(){
-        //2.Test
+    public void jsConfirmTest() {
+        // 2.Test
         //	- https://testotomasyonu.com/javascriptAlert adresine gidin
         driver.get("https://testotomasyonu.com/javascriptAlert");
 
         //	- 2.alert'e tiklayalim
         driver.findElement(By.xpath("//*[@onclick='jsConfirm()']"))
                 .click();
-
 
         //	- Cancel'a basip,
         driver.switchTo()
@@ -75,14 +71,12 @@ public class C02_JsAlerts extends TestBase_Each {
         //	cikan sonuc yazisinin "You clicked: Cancel" oldugunu test edin
         String expectedSonucyazisi = "You clicked: Cancel";
         String actualSonucYazisi = driver.findElement(By.id("result")).getText();
-
-        Assertions.assertEquals(expectedSonucyazisi,actualSonucYazisi);
-
+        Assertions.assertEquals(expectedSonucyazisi, actualSonucYazisi);
     }
 
     @Test
-    public void jsPromptTest(){
-        //3.Test
+    public void jsPromptTest() {
+        // 3.Test
         //	- https://testotomasyonu.com/javascriptAlert adresine gidin
         driver.get("https://testotomasyonu.com/javascriptAlert");
 
@@ -92,7 +86,6 @@ public class C02_JsAlerts extends TestBase_Each {
         //	- Cikan prompt ekranina "Cansu" yazdiralim
         driver.switchTo().alert().sendKeys("Cansu");
 
-
         //	- OK tusuna basarak alert'i kapatalim
         driver.switchTo()
                 .alert()
@@ -101,11 +94,6 @@ public class C02_JsAlerts extends TestBase_Each {
         //	- Cikan sonuc yazisinin Cansu icerdigini test edelim
         String expectedSonucYaziIcerigi = "Cansu";
         String actualSonucYazisi = driver.findElement(By.id("result")).getText();
-
         Assertions.assertTrue(actualSonucYazisi.contains(expectedSonucYaziIcerigi));
-
-
     }
-
-
 }

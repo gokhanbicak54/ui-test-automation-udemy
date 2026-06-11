@@ -9,15 +9,12 @@ import utilities.TestBase_Each;
 import java.util.List;
 
 public class C01_IFrame extends TestBase_Each {
-
     @Test
-    public void test01(){
-        //1) https://demoqa.com/frames sitesine gidiniz
+    public void test01() {
+        // 1) https://demoqa.com/frames sitesine gidiniz
         driver.get("https://demoqa.com/frames");
 
-
-        //2) This is a sample page yazisinin gorunur oldugunu test edin
-
+        // 2) This is a sample page yazisinin gorunur oldugunu test edin
         WebElement hedefIFrameElementi = driver.findElement(By.id("frame1"));
         driver.switchTo().frame(hedefIFrameElementi);
 
@@ -29,11 +26,9 @@ public class C01_IFrame extends TestBase_Each {
                  once o iframe'e gecis yapmamiz gerekir
              */
         WebElement yaziElementi = driver.findElement(By.xpath("(//h1[@id='sampleHeading'])[1]"));
-
         Assertions.assertTrue(yaziElementi.isDisplayed());
 
-
-        //3) TOOLSQA logosunun gorunur oldugunu test edin
+        // 3) TOOLSQA logosunun gorunur oldugunu test edin
         /*
             iframe icine gecis yapinca , biz driver'i oradan cikarincaya kadar
             driver iframe'in icinde kalir
@@ -50,22 +45,11 @@ public class C01_IFrame extends TestBase_Each {
 
         //driver.switchTo().defaultContent();
         driver.switchTo().parentFrame();
-
         WebElement toolsQaLogo = driver.findElement(By.xpath("//*[@src='/images/Toolsqa.jpg']"));
         Assertions.assertTrue(toolsQaLogo.isDisplayed());
 
-        //4) sayfadaki iframe sayısını yazdirin.
-
+        // 4) sayfadaki iframe sayısını yazdirin.
         List<WebElement> iframeListesi = driver.findElements(By.tagName("iframe"));
-
-        System.out.println("Sayfadaki iFrame sayisi : " + iframeListesi.size() );
-
-
-
-
-
-
-
-
+        System.out.println("Sayfadaki iFrame sayisi: " + iframeListesi.size() );
     }
 }
